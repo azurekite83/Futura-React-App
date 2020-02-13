@@ -1,0 +1,7 @@
+{
+  "short_name": "Futura",
+  "name": "Futura, the most efficient electric car company",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000"
+}
