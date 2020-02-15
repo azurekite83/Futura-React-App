@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
 import './FuturaApp.css';
@@ -68,6 +69,25 @@ function MissionStatement() {
         </Col>
       </Row>
     </Container>
+=======
+import React, { useState, useEffect, Fragment } from 'react';
+import { motion } from "framer-motion"
+
+import './FuturaApp.css';
+
+function FuturaApp(props) {
+  return (
+    <Fragment>
+      <Test />
+    </Fragment>
+    
+  );
+}
+
+function Test(props) {
+  return (
+    <motion.div animate={{ scale: 0.5 }} />
+>>>>>>> 4dd7d3f0ab00de7c1b6e96426e6fecdf15a21e5e
   );
 }
 
