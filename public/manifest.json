@@ -1,16 +1,8 @@
 {
-<<<<<<< HEAD
   "short_name": "Futura App",
   "name": "Futura App, future of electric cars",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#000000"
-=======
-  "short_name": "Futura",
-  "name": "Futura, the most efficient electric car company",
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000"
->>>>>>> 4dd7d3f0ab00de7c1b6e96426e6fecdf15a21e5e
 }
