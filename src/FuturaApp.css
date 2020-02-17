@@ -1,6 +1,19 @@
+/* General */
 .FuturaApp {
   text-align: center;
   font-family: 'Odibee Sans', sans-serif;
+}
+
+.container {
+  padding: 0;
+}
+
+/* Navigation */
+#navigation {
+  height: 3rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 0 0 2rem 0;
+  margin-right: 0;
 }
 
 .nav-link {
@@ -8,3 +21,20 @@
   color:#edd81c;
 }
 
+.nav-link:hover {
+  color: white;
+  background-color: #000000;
+}
+
+/* Reviews */
+#reviews .rounded {
+  max-width: 70px;
+  max-height: 70px;
+}
+
+/* Downloads */
+
+#downloads img {
+  max-height: 2rem;
+  max-width: 2rem;
+}
