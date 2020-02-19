@@ -29,7 +29,7 @@
 
 /* Welcome */
 #welcome {
-  min-height: 36rem;
+  min-height: 40rem;
 }
 
 #welcome .col-12 {
@@ -66,7 +66,7 @@
 /* Mission Statement and statistics */
 
 #missionStatement {
-  min-height: 30rem;
+  min-height: 26rem;
 }
 
 #missionStatement h3 {
@@ -108,8 +108,17 @@
 }
 /* Reviews */
 #reviews {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 10.5rem;
+  margin-bottom: 10.5rem;
+}
+
+#reviews h4 {
+  text-align: center;
+  color: #000000;
+}
+
+#reviews span {
+  color: #fcba03;
 }
 
 #reviews .col-12 {
@@ -128,6 +137,11 @@
   border: 1px solid #fcba03;
 }
 
+#reviews ul {
+  border-bottom: 1px solid #fcba03;
+  padding-bottom: 1rem;
+}
+
 #reviews li {
   list-style-type: none;
 }
@@ -142,10 +156,6 @@
 }
 
 /* Products */
-#products {
-  margin-bottom: 1.5rem;
-}
-
 #products span {
   color: #000000;
 }
@@ -160,6 +170,10 @@
   transition: -webkit-transform 5s ease;
   transition: transform 5s ease;
   transition: transform 5s ease, -webkit-transform 5s ease;
+}
+
+#products .carousel {
+  max-width: 55rem;
 }
 
 #products .carousel .row {
@@ -186,7 +200,8 @@
 }
 /* Downloads */
 #downloads {
-  margin-top: 4rem;
+  min-height: 25rem;
+  margin-top: 14.5rem;
 }
 
 #downloads .row {
@@ -201,7 +216,10 @@
 }
 
 #downloads h4 {
-  color: #000000;
+  color: #fcba03;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #fcba03;
 }
 
 #downloads .col-4 {
@@ -216,6 +234,7 @@
 
 #downloads a {
   display: block;
+  margin-top: 1rem;
 }
 
 /* Footer */
@@ -224,4 +243,12 @@
   margin-top: 3rem;
   background-color: #373a3b;
   padding-top: .8rem;
+}
+
+/* Media queries */
+@media (min-width: 992px) {
+  #welcome {
+    padding-top: 4rem;
+    margin-bottom: 1rem;
+  }
 }

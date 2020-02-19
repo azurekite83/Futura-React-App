@@ -1,26 +1,47 @@
 import './FuturaApp.css';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Nav, Carousel, Image } from 'react-bootstrap';
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 
 import DownloadImg from './img/downloadImg.png';
 import FuturaMobile from './img/futuraMobile.jpg';
 import FuturaTraveler from './img/futuraTraveler.jpg';
 import Stallion from './img/stallion.jpg';
 
-const reviewDescriptions = ["Wow! Futura has really outdone itself! I've had this car since 2011 and the material has lasted even though the price of the car is cheap!",
-"At first I was skeptical, but it seems like Futura really has outdone itself. It's very efficient and the battery life is long lasting.",
+const reviewDescriptions = ["Wow! Futura has really outdone itself! I've had this car since 2011 and the material has lasted even though the price of the car is cheap! Would definitely recommend.",
+"At first I was skeptical, but it seems like Futura really has done it. It's very efficient and the battery life is long lasting.",
 "I knew at first sight, just by looking at the car catalog that this buy was gonna be my best. Both energy efficient and lasting, and the aesthetics of the car are beautiful! Not to mention, customer service was great since this was one of my first cars, love it!"];
 
-const reviewElements = [{name: "Jim Doe", review: reviewDescriptions[0], id: 1}, 
-{name: "John Doe", review: reviewDescriptions[1], id: 2},
-{name: "Jacy Doe", review: reviewDescriptions[2], id: 3}];
+const reviewElements = [{name: "Jim Doe", review: reviewDescriptions[0], product: "Futura Mobile", id: 1}, 
+{name: "John Doe", review: reviewDescriptions[1], product: "Futura Traveler", id: 2},
+{name: "Jacy Doe", review: reviewDescriptions[2], product: "Stallion", id: 3}];
 
-const futuraMobile = {image: FuturaMobile, carName: "Futura Mobile", batteryLife: "45 miles", material: "Leather interior", features: "Advanced AC system with minimal electrical use, state of the art speakers, masterfully tuned with Dolby, durable Aluminum-steel alloy for exterior, $28k", id: 0};
-const futuraTraveler = {image: FuturaTraveler, carName: "Futura Traveler", batteryLife: "80 miles", material: "Nylon interior", features: "Auto adjusting window shading, upgraded air filtering for long lasting clean air, docking compatibility for extended travel times, $32k", id: 1};
-const stallion = {image: Stallion, carName: "Stallion", batteryLife: "40 miles", material: "Vinyl interior", features: "Max efficiency engine, utilizes the least electricity for the most speed, unmatched aesthetics, easy manual transmission $40k", id: 2};
+const futuraMobile = {image: FuturaMobile, carName: "Futura Mobile", batteryLife: "45 miles", material: "Leather interior", features: "Advanced AC system with minimal electrical use, state of the art speakers, masterfully tuned with Dolby, durable Aluminum-steel alloy for exterior, $25k", id: 0};
+const futuraTraveler = {image: FuturaTraveler, carName: "Futura Traveler", batteryLife: "80 miles", material: "Nylon interior", features: "Auto adjusting window shading, upgraded air filtering for long lasting clean air, docking compatibility for extended travel times, $30k", id: 1};
+const stallion = {image: Stallion, carName: "Stallion", batteryLife: "40 miles", material: "Vinyl interior", features: "Max efficiency engine, utilizes the least electricity for the most speed, unmatched aesthetics, easy manual transmission $37k", id: 2};
 
 const vehicles = [futuraMobile, futuraTraveler, stallion];
+
+function MobileOrDesktop() {
+  const [ displaySize, setDisplay ] = useState(window.innerWidth);
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+  })
+
+  function handleResize(displaySize) {
+    setDisplay(
+      displaySize = window.innerWidth
+    );
+  }
+
+  if(displaySize >= 992) {
+    return <PromotionDesktopDisplay />
+  }
+  else {
+    return <PromotionMobileDisplay />
+  }
+}
 
 function FuturaApp() {
   return(
@@ -65,13 +86,11 @@ function Welcome() {
   return(
     <Container fluid id="welcome">
       <Row className="justify-content-center align-items-center" id="heading">
-        <motion.div initial={{ x: -500 }} animate={{ x: 0 }} transition={{ duration: 1 }}>
           <h1>Welcome!</h1>
-        </motion.div>
       </Row> 
 
       <Row className="justify-content-center align-items-center">
-        <Col xs={12}>
+        <Col xs={12} lg={5}>
           <p>
             Futura Corporations is an early 2000's establishment made to lessen the carbon
             footprint that was made by consuming too much fossil fuel.
@@ -86,53 +105,57 @@ function MissionStatement() {
   return (
     <Container fluid id="missionStatement">
       <Row className="justify-content-center align-items-center">
-        <Col xs={12}>
+        <Col xs={12} lg={8}>
         <h3>Our Mission</h3>
 
-        <p> 
-          Our mission in Futura is to provide the most energy and cost efficient
-          solution to cars, while also lessening the carbon footprint caused by overuse 
-          of fossil fuels. By doing this we can provide a cleaner environment and help
-          those that are affected by pollution in greater cities. We believe that saving
-          the Earth begins with refinement of our vehicles, and we can do just that.
-        </p>
+          <p> 
+            Our mission in Futura is to provide the most energy and cost efficient
+            solution to cars, while also lessening the carbon footprint caused by overuse 
+            of fossil fuels. By doing this we can provide a cleaner environment and help
+            those that are affected by pollution in greater cities. We believe that saving
+            the Earth begins with refinement of our vehicles, and we can do just that.
+          </p>
         </Col>
       </Row>
     </Container>
   );
 }
 
-function Promotions() {
+function PromotionMobileDisplay() {
   return(
-    <Container fluid id="promotions">
-      <Row className="justify-content-center align-items-center">
-        <Col xs={12}>
+    <>
+    <Row className="justify-content-center align-items-center">
+        <Col xs={12} lg={4}>
           <h3>Engineering</h3>
 
           <p>
               At Futura, our top engineers come up with 
-              well thought out solutions to make our products
+              well formulated solutions to make our products
               more efficient. They devote their time and resources
-              to come up with better design to appeal the public and promote
-              a better aesthetic, even if the customer is not interested
+              to come up with better designs to appeal to consumers and promote
+              a stylish aesthetic, even if the consumer is not interested
               in making a better environment. This helps to double sales and
-              aid in our mission to spread the use of electric cars.
+              aid in our mission to spread the use of electric cars. On top of aesthetic,
+              our engineers continuously revise the engine design of our cars, a great example being our top seller (Stallion),
+              so that the engine consumes the least electricity but provides the most power.
           </p>
         </Col>
       </Row>
       <Row className="justify-content-center align-items-center">
-        <Col xs={12}>
+        <Col xs={12} lg={4}>
           <h3>Sales</h3>
 
           <p>
             Because of our engineers and their devotion to design and efficiency,
-            our sales since 2000 have doubled and are increasing almost exponentially. 
+            our sales since 2000 have doubled and are increasing almost exponentially.
+            This also causes our prices to be the best for ultimate quality cars because of
+            the demand for our cars. 
           </p>
 
         </Col>
       </Row>
       <Row className="justify-content-center align-items-center">
-        <Col xs={12}>
+        <Col xs={12} lg={4}>
           <h3>Delivery</h3>
 
           <p>
@@ -141,6 +164,57 @@ function Promotions() {
           </p>
         </Col>
       </Row>
+      </>
+  );
+}
+
+function PromotionDesktopDisplay() {
+  return(
+    <Row className="justify-content-center align-items-center">
+        <Col xs={12} lg={4}>
+          <h3>Engineering</h3>
+
+          <p>
+              At Futura, our top engineers come up with 
+              well formulated solutions to make our products
+              more efficient. They devote their time and resources
+              to come up with better designs to appeal to consumers and promote
+              a stylish aesthetic, even if the consumer is not interested
+              in making a better environment. This helps to double sales and
+              aid in our mission to spread the use of electric cars. On top of aesthetic,
+              our engineers continuously revise the engine design of our cars, a great example being our top seller (Stallion),
+              so that the engine consumes the least electricity but provides the most power. 
+          </p>
+        </Col>
+        <Col xs={12} lg={4}>
+          <h3>Sales</h3>
+
+          <p>
+            Because of our engineers and their devotion to design and efficiency,
+            our sales since 2000 have doubled and are increasing almost exponentially.
+            This also causes our prices to be the best for ultimate quality cars because of
+            the demand for our cars.
+          </p>
+
+        </Col>
+        <Col xs={12} lg={4}>
+          <h3>Delivery</h3>
+
+          <p>
+            At Futura, we deliver straight to you with our sophisticated
+            shipping app (which is included in the <a href="#downloads" id="download-link">download</a> section below)
+          </p>
+        </Col>
+      </Row>
+  );
+}
+
+function Promotions(props) {
+  const display = <MobileOrDesktop />;
+
+  return(
+    <Container fluid id="promotions">
+      {display}
     </Container>
   );
 }
@@ -150,13 +224,15 @@ function ReviewList(props) {
   const reviewsToHtml = reviews.map((element) => {
       return (
         <Row className="justify-content-center align-items-center" key={element.id}>
-          <Col xs={12}>
+          <Col xs={12} lg={7}>
               <ul>
                 <li>
                   <h2>{element.name}</h2>
                   {element.review}
                 </li>
               </ul>
+
+              <h4>Product: <span>{element.product}</span></h4>
             </Col>
         </Row>
       );
@@ -210,9 +286,11 @@ function Products(props) {
           <h1>Products</h1>
         </Col>
       </Row>
-      <Carousel>
-        {carToHtml}
-      </Carousel>
+      <Row className="justify-content-center align-items-center">
+        <Carousel>
+          {carToHtml}
+        </Carousel>
+      </Row>
     </Container>
   );
 }
